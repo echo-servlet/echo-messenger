@@ -21,9 +21,9 @@ public class MessageController {
 
     @GetMapping(value = "/messages")
     @CrossOrigin
-    public List<Message> messages() {
-        System.out.println(messageService.getAllMessages());
-        return messageService.getAllMessages();
+    public String messages() {
+        List<Message> messages = messageService.getAllMessages();
+        return "messages are here";
     }
 
     @PostMapping(value = "/message")
