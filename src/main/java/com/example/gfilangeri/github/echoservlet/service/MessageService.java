@@ -13,11 +13,15 @@ public class MessageService {
     @Autowired
     private MessageRepository messageRepository;
 
-    public List<Message> getAllMessages() {
-        return messageRepository.findAll();
+    public List<Message> getAllMessagesWithChatId(Long chatId) {
+        System.out.println("chat id: " + chatId);
+//        return messageRepository.findByChatId(Long.toString(chatId));
+        return messageRepository.findByChatId(chatId);
+//        return messageRepository.findAll();
     }
 
-    public void insert(Message message) {
+    public Message insert(Message message) {
         messageRepository.save(message);
+        return message;
     }
 }

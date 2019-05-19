@@ -19,19 +19,21 @@ public class MessageController {
         return "index";
     }
 
-    @GetMapping(value = "/messages")
+    @GetMapping(value = "/messages/{chatId}")
     @CrossOrigin
-    public List<Message> messages() {
-        List<Message> messages = messageService.getAllMessages();
+    public List<Message> messages(@PathVariable("chatId") long chatId) {
+        List<Message> messages = messageService.getAllMessagesWithChatId(chatId);
+        System.out.println("messages: " + messages);
         return messages;
     }
 
     @PostMapping(value = "/message")
     @CrossOrigin
-    public void publishMessage(@RequestBody Message message) {
+    public Message publishMessage(@RequestBody Message message) {
         if (message.getDate() == null) {
             message.setDate(new Date());
         }
         messageService.insert(message);
+        return message;
     }
 }
