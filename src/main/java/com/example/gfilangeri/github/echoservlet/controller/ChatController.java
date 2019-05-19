@@ -21,7 +21,10 @@ public class ChatController {
 
     @PostMapping(value = "/chat")
     @CrossOrigin
-    public void publishChat(@RequestBody Chat chat) {
+    public Chat publishChat(@RequestBody Chat chat) {
+        System.out.println("group "+ chat.getGroupId());
+        System.out.println("title "+ chat.getTitle());
         chatService.insert(chat);
+        return chat;
     }
 }

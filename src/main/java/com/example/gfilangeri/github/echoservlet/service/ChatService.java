@@ -16,7 +16,8 @@ public class ChatService {
         return chatRepository.findAll();
     }
 
-    public void insert(Chat chat) {
+    public Chat insert(Chat chat) {
         chatRepository.save(chat);
+        return chat;
     }
 }
