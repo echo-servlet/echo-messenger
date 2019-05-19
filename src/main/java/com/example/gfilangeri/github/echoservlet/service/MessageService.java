@@ -15,13 +15,10 @@ public class MessageService {
 
     public List<Message> getAllMessagesWithChatId(Long chatId) {
         System.out.println("chat id: " + chatId);
-//        return messageRepository.findByChatId(Long.toString(chatId));
         return messageRepository.findByChatId(chatId);
-//        return messageRepository.findAll();
     }
 
-    public Message insert(Message message) {
+    public void insert(Message message) {
         messageRepository.save(message);
-        return message;
     }
 }
